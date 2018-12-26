@@ -1,0 +1,13 @@
+.body {
+  align-content: center;
+}
+
+
+.pokemonGif {
+  float: left;
+  margin: 5px;
+}
+
+.pokeDexbody {
+  margin: auto;
+}
