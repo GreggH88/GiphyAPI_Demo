@@ -16,41 +16,74 @@ function displayPokeInfo() {
     console.log(querygiphyURL);
 
     var results = response.data;
+    console.log(response.data);
+
+    var imgURLmain = results[0].images.fixed_height_still.url;
+    var imgURLstillmain = results[0].images.fixed_height_still.url;
+    var imgURLanimatemain = results[0].images.fixed_height.url;
+
+    var mainImage = $("<img>").attr("src", imgURLmain).attr("data-still", imgURLstillmain).attr("data-animate", imgURLanimatemain).addClass("gif");
+
 
     for (var i = 0; i < results.length; i++) {
-      // Creating a div to hold the movie
+      // Create a div to hold the gif
       var pokemonDiv = $("<div class='pokemonGif'>");
 
-      // Retrieving the URL for the image
+      // get the URL for the static gif
       var imgURL = results[i].images.fixed_height_still.url;
+      var imgURLstill = results[i].images.fixed_height_still.url;
+      var imgURLanimate = results[i].images.fixed_height.url;
 
-      // Creating an element to hold the image
-      var image = $("<img>").attr("src", imgURL);
 
-      // Appending the image
+
+
+      // Create an element to hold the image
+      var image = $("<img>").attr("src", imgURL).attr("data-still", imgURLstill).attr("data-animate", imgURLanimate).addClass("gif");
+      console.log(image);
+
+
+
+
+      // Appending the static gif to the div
       pokemonDiv.append(image);
 
-      // Putting the entire movie above the previous movies
+
+      // Putting the newest search in front of the previous
       $("#pokeDexGif").prepend(pokemonDiv);
     }
+    $(".mainViewScreen").append(mainImage);
+
+    $(".gif").on("click", function () {
+      var state = $(this).attr("data-state");
+      if (state === "still") {
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("data-state", "animate");
+      } else {
+        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("data-state", "still");
+      }
+    });
+
+
+
   });
 
 };
 
+
 // Function for displaying movie data
 function renderButtons() {
 
-  // Deleting the movies prior to adding new movies
-  // (this is necessary otherwise you will have repeat buttons)
+  // Deleting the pokemon search before adding new search
   $("#topicButtons").empty();
 
-  // Looping through the array of movies
+  // Loop through the array of pokemon
   for (var i = 0; i < pokeArray.length; i++) {
 
     // Then dynamicaly generating buttons for each movie in the array
-    // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
+
     var a = $("<button>");
-    // Adding a class of movie-btn to our button
+    // Adding a class of pokemon-btn to our button
     a.addClass("pokemon-btn");
     // Adding a data-attribute
     a.attr("data-name", pokeArray[i]);
@@ -73,6 +106,7 @@ $("#add-pokemon").on("click", function (event) {
   // Calling renderButtons which handles the processing of our movie array
   renderButtons();
 });
+
 
 // Adding a click event listener to all elements with a class of "movie-btn"
 $(document).on("click", ".pokemon-btn", displayPokeInfo);
