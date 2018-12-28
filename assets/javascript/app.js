@@ -15,14 +15,16 @@ function displayPokeInfo() {
     console.log(response);
     console.log(querygiphyURL);
 
-    var results = response.data;
     console.log(response.data);
+
+    var results = response.data;
 
     var imgURLmain = results[0].images.fixed_height_still.url;
     var imgURLstillmain = results[0].images.fixed_height_still.url;
     var imgURLanimatemain = results[0].images.fixed_height.url;
 
-    var mainImage = $("<img>").attr("src", imgURLmain).attr("data-still", imgURLstillmain).attr("data-animate", imgURLanimatemain).addClass("gif");
+    var mainImage = $("<img>").attr("src", imgURLmain).attr("data-still", imgURLstillmain).attr("data-animate", imgURLanimatemain).attr("data-state", "still").addClass("gif");
+    
 
 
     for (var i = 0; i < results.length; i++) {
@@ -38,7 +40,7 @@ function displayPokeInfo() {
 
 
       // Create an element to hold the image
-      var image = $("<img>").attr("src", imgURL).attr("data-still", imgURLstill).attr("data-animate", imgURLanimate).addClass("gif");
+      var image = $("<img>").attr("src", imgURL).attr("data-still", imgURLstill).attr("data-animate", imgURLanimate).attr("data-state", "still").addClass("gif");
       console.log(image);
 
 
