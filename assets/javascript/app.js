@@ -33,18 +33,19 @@ function displayPokeInfo() {
       var imgURL = results[i].images.fixed_height_still.url;
       var imgURLstill = results[i].images.fixed_height_still.url;
       var imgURLanimate = results[i].images.fixed_height.url;
-
+      var rating = results[i].rating;
       // Create an element to hold the image
       var image = $("<img>").attr("src", imgURL).attr("data-still", imgURLstill).attr("data-animate", imgURLanimate).attr("data-state", "still").addClass("gif");
-      console.log(image);
+
 
       // Appending the static gif to the div
-      pokemonDiv.append(image);
+      pokemonDiv.append(image).addClass("col-12");
 
+      // $(".pokemonGif").text("Rated: " + rating)
       // Putting the newest search in front of the previous
       $("#pokeDexGif").prepend(pokemonDiv);
     }
-    $(".mainViewScreen").append(mainImage);
+    // $(".mainViewScreen").append(mainImage);
 
     $(".gif").on("click", function () {
       var state = $(this).attr("data-state");
@@ -64,7 +65,6 @@ function displayPokeInfo() {
 };
 
 
-// Function creating buttons from our pokeArray
 function renderButtons() {
 
   // Deleting the pokemon search before adding new search
@@ -74,32 +74,23 @@ function renderButtons() {
   for (var i = 0; i < pokeArray.length; i++) {
 
     var a = $("<button>");
-    // Adding a class of pokemon-btn to our button
     a.addClass("pokemon-btn");
-    // Adding a data-attribute
     a.attr("data-name", pokeArray[i]);
-    // Providing the initial button text
     a.text(pokeArray[i]);
-    // Adding the button to the buttons-view div
     $("#topicButtons").append(a);
   }
 }
 
-// This events triggers when an add-pokemon button is clicked
 $("#add-pokemon").on("click", function (event) {
   event.preventDefault();
-  // This line grabs the input from the textbox
   var pokemon = $("#pokemon-input").val().trim();
 
-  // Adding text from the textbox to our array
   pokeArray.push(pokemon);
 
   renderButtons();
 });
 
 
-// Adding a click event listener to all elements with a class of pokemon-btn"
 $(document).on("click", ".pokemon-btn", displayPokeInfo);
 
-// Calling the renderButtons function to display the intial buttons
 renderButtons();

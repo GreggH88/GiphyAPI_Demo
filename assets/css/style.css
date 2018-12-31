@@ -1,14 +1,57 @@
 .body {
   align-content: center;
+  background: url("../images/prism.png");
+  background-color: #8D850E;
 }
 
+.mainRow {
+  width: 100%;
+}
+
+.searchColumn {
+  float:left;
+  height: 200px;
+}
+.container {
+  position: relative;
+  width: 960px;
+}
+.titleDiv {
+  text-align: center;
+  margin: auto;
+  width: 66%;
+  background-color: #800020;
+  color: #0A9BCC;
+  margin-bottom: 20px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #0A9BCC;
+}
+
+.buttonsStyleDiv {
+  position: absolute;
+  margin-top: 70px;
+  width: 620px;
+  height: 40px;
+}
+
+#newPokemonForm {
+  position: absolute;
+  margin-top: 120px;
+}
 
 .pokemonGif {
   float: left;
   margin: 5px;
+  border-style: ridge;
+  border-width: 15px;
+  border-color: blue;
+  border-radius: 18px;
+  box-shadow: 10px 10px #0A9BCC;
 }
 
-.pokeDexbody {
-  margin: auto;
-  transform: translate(50%, 50%);
+#pokeDexGif {
+ 
+  min-height: 500px;
+
 }

@@ -13,27 +13,34 @@
 
 <body>
 
+  <div class="jumbotron titleDiv">
+    <h1>Pokemon gif search!</h1>
+  </div>
+
 
   <div class="container">
-    <h1>Pokemon gif search!</h1>
+    <div class="row mainRow">
+      <div class="searchColumn col-6">
+        <!-- New buttons will get placed here  -->
+        <div class="buttonsStyleDiv">
+          <div id="topicButtons"></div>
+        </div>
+        <!-- Input form for new search buttons -->
+        <form id="newPokemonForm">
+          <label for="pokemon-input">Add a Pokemon to the list!</label>
+          <input type="text" id="pokemon-input">
+          <br>
 
-    <!-- New buttons will get placed here  -->
-    <div id="topicButtons"></div>
-    <!-- Input form for new search buttons -->
-    <form id="newPokemonForm">
-      <label for="pokemon-input">Add a Pokemon to the list!</label>
-      <input type="text" id="pokemon-input">
-      <br>
-
-      <!-- Button to add new pokemon button-->
-      <input id="add-pokemon" type="submit" value="Add a new Pokemon to the list!">
-    </form>
-
-    <!-- Pokemon gif and info will Get placed here -->
-    <div class="row" id="pokeDexGif">
-      <div class="pokeDex col-4"></div>
+          <!-- Button to add new pokemon -->
+          <input id="add-pokemon" type="submit" value="Add a new Pokemon to the list!">
+        </form>
+      </div>
+      <!-- Pokemon gif and info will Get placed here -->
+      <div class="pokeDex col-6" id="pokeDexGif">
+      </div>
     </div>
   </div>
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
