@@ -12,18 +12,10 @@ function displayPokeInfo() {
     url: querygiphyURL,
     method: "GET"
   }).then(function (response) {
-    console.log(response);
     console.log(querygiphyURL);
-
     console.log(response.data);
 
     var results = response.data;
-
-    // for later use for active viewer
-    // var imgURLmain = results[0].images.fixed_height_still.url;
-    // var imgURLstillmain = results[0].images.fixed_height_still.url;
-    // var imgURLanimatemain = results[0].images.fixed_height.url;
-    // var mainImage = $("<img>").attr("src", imgURLmain).attr("data-still", imgURLstillmain).attr("data-animate", imgURLanimatemain).attr("data-state", "still").addClass("gif");
 
     for (var i = 0; i < results.length; i++) {
       // Create a div to hold the gif
@@ -40,13 +32,11 @@ function displayPokeInfo() {
 
       // Appending the static gif to the div
       pokemonDiv.append(image).addClass("col-12");
-
-      // $(".pokemonGif").text("Rated: " + rating)
+      pokemonDiv.append("Rating: " + rating);
       // Putting the newest search in front of the previous
       $("#pokeDexGif").prepend(pokemonDiv);
     }
-    // $(".mainViewScreen").append(mainImage);
-
+// on click function for gif startstop
     $(".gif").on("click", function () {
       var state = $(this).attr("data-state");
       if (state === "still") {
@@ -57,22 +47,14 @@ function displayPokeInfo() {
         $(this).attr("data-state", "still");
       }
     });
-
-
-
   });
-
 };
 
-
 function renderButtons() {
-
   // Deleting the pokemon search before adding new search
   $("#topicButtons").empty();
-
   // Loop through the array of pokemon
   for (var i = 0; i < pokeArray.length; i++) {
-
     var a = $("<button>");
     a.addClass("pokemon-btn");
     a.attr("data-name", pokeArray[i]);
@@ -84,12 +66,9 @@ function renderButtons() {
 $("#add-pokemon").on("click", function (event) {
   event.preventDefault();
   var pokemon = $("#pokemon-input").val().trim();
-
   pokeArray.push(pokemon);
-
   renderButtons();
 });
-
 
 $(document).on("click", ".pokemon-btn", displayPokeInfo);
 
