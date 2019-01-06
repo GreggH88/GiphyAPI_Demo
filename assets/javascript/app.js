@@ -1,4 +1,4 @@
-var pokeArray = ["squirtle", "charmander", "bulbasaur", "Mewtwo"];
+var pokeArray = ["Squirtle", "Charmander", "Bulbasaur", "Mewtwo"];
 
 // displayPokeInfo function re-renders the HTML to display the appropriate content
 function displayPokeInfo() {
@@ -52,14 +52,14 @@ function displayPokeInfo() {
 
 function renderButtons() {
   // Deleting the pokemon search before adding new search
-  $("#topicButtons").empty();
+  $("#pokeButtons").empty();
   // Loop through the array of pokemon
   for (var i = 0; i < pokeArray.length; i++) {
     var a = $("<button>");
     a.addClass("pokemon-btn");
     a.attr("data-name", pokeArray[i]);
     a.text(pokeArray[i]);
-    $("#topicButtons").append(a);
+    $("#pokeButtons").append(a);
   }
 }
 

@@ -12,7 +12,8 @@
 
 .mainRow {
   position: relative;
-  width: 960px;
+  left: 10px;
+  width: 90%;
   background-color: #083B4D;
   border-radius: 10px;
   border-style: solid;
@@ -65,10 +66,6 @@
   overflow: auto;
 }
 
-#newPokemonForm {
- 
-}
-
 .pokemonGif {
   float: left;
   margin: 5px;
@@ -79,16 +76,15 @@
   border-radius: 18px;
   box-shadow: 10px 10px #0A9BCC;
   box-shadow: 10px 10px #0A9BCC inset;
-
   background-color: #0A9BCC;
-
 }
 
 #pokeDexGif {
-
+  width: 100%;
   min-height: 500px;
-
 }
+
+
 
 .pokemon-btn {
   float: left;
@@ -97,4 +93,8 @@
 
 .directions {
   color: #330511;
+}
+
+.gif {
+  max-width: 275px;
 }
